@@ -3,11 +3,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 from sklearn.preprocessing import OneHotEncoder,LabelEncoder
-
+import seaborn as sns
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-
+import matplotlib.pyplot as plt
 # Load dataset.
 dftrain = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/train.csv')
 dfeval = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/eval.csv')
@@ -87,11 +87,25 @@ sorted_ix = example.abs().sort_values()[-TOP_N:].index
 ax = example[sorted_ix].plot(kind='barh')
 
 importances = est.experimental_feature_importances(normalize=True)
-df_imp = pd.Series(importances)
+df_imp = pd.DataFrame(pd.Series(importances)).reset_index()
+df_imp.columns=["feature","importance"]
+# # Visualize importances.
+# N = 8
+# ax = (df_imp.iloc[0:N][::-1]
+#     .plot(kind='barh'))
+axis_fs = 18 #fontsize
+title_fs = 22 #fontsize
+sns.set(style="whitegrid")
 
-# Visualize importances.
-N = 8
-ax = (df_imp.iloc[0:N][::-1]
-    .plot(kind='barh'))
 
-ax.savefig("feature_importance.png",dpi=120) 
+
+ax = sns.barplot(x="importance", y="feature", data=df_imp)
+ax.set_xlabel('Importance',fontsize = axis_fs) 
+ax.set_ylabel('Feature', fontsize = axis_fs)#ylabel
+ax.set_title('Random forest\nfeature importance', fontsize = title_fs)
+
+plt.tight_layout()
+plt.savefig("feature_importance.png",dpi=120) 
+plt.close()
+
+
