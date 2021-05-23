@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 
-for i in *.png *.jpg *.jpeg;
-do
-  echo "$i"
-  cml-publish "$i" --md >> report.md
+
+
+for file in *.{jpg,jpeg,png}; do
+  [ -e "$file" ] || continue
+  # Here "$file" exists
+   echo "$file"
+   cml-publish "$file" --md >> report.md
+
 done
