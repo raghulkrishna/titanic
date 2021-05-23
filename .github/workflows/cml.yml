@@ -17,6 +17,6 @@ jobs:
           echo "## Model metrics" > report.md
           
           echo "## Data viz" >> report.md
-          bash cml_scripts/cml_image_publish.sh
+          bash cml_script/cml_image_publish.sh
           
           cml-send-comment report.md

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-for i in *.png *.bin *.txt;
+for i in *.png *.jpg *.jpeg;
 do
   echo "$i"
   cml-publish "$i" --md >> report.md
