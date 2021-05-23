@@ -94,4 +94,4 @@ N = 8
 ax = (df_imp.iloc[0:N][::-1]
     .plot(kind='barh'))
 
-plt.savefig("feature_importance.png",dpi=120) 
+ax.savefig("feature_importance.png",dpi=120) 
