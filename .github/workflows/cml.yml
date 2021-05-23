@@ -1,5 +1,8 @@
 name: model-wine-quality
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 jobs:
   run:
     runs-on: [ubuntu-latest]
