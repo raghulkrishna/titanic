@@ -8,6 +8,6 @@ for file in *.{jpg,jpeg,png}; do
   # Here "$file" exists
    echo "$file"
    cml-publish "$file" --md >> report.md
-   echo "\n" >> report.md
+   echo "  " >> report.md
 
 done
