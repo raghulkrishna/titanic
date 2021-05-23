@@ -89,10 +89,10 @@ ax = example[sorted_ix].plot(kind='barh')
 importances = est.experimental_feature_importances(normalize=True)
 df_imp = pd.DataFrame(pd.Series(importances)).reset_index()
 df_imp.columns=["feature","importance"]
-# # Visualize importances.
-# N = 8
-# ax = (df_imp.iloc[0:N][::-1]
-#     .plot(kind='barh'))
+# Visualize importances.
+N = 8
+ax = df_imp.iloc[0:N][::-1].plot(kind='barh')
+ax.figure.savefig("feature.png")
 axis_fs = 18 #fontsize
 title_fs = 22 #fontsize
 sns.set(style="whitegrid")
