@@ -24,12 +24,6 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev \
-                        librsvg2-dev libfontconfig-dev
-          sudo npm i -g @dvcorg/cml
-          sudo npm install -g vega-cli vega-lite
-          
-          
           # Your ML workflow goes here
           /usr/bin/python3 -m pip install --upgrade pip
           pip install -r req.txt
