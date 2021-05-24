@@ -6,3 +6,5 @@ numpy
 tensorflow
 mlflow
 boto3
+git+git://github.com/iterative/dvc
+s3fs

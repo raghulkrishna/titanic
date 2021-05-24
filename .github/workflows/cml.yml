@@ -1,14 +1,21 @@
 name: model-wine-quality
 on: 
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
+
+    
+
+    #container: docker://dvcorg/cml:0-dvc2-base1
     steps:
+      - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
+        with:
+          node-version: '12'
       - name: cml_run
         env:
           repo_token: ${{ secrets.TOKEN }}
@@ -18,6 +25,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           # Your ML workflow goes here
+          /usr/bin/python3 -m pip install --upgrade pip
           pip install -r req.txt
           python train.py
           
