@@ -6,4 +6,4 @@ numpy
 tensorflow
 mlflow
 boto3
-dvc
+git+git://github.com/iterative/dvc
