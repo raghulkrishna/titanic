@@ -20,13 +20,13 @@ repo=os.getcwd()
 train_resource_url = dvc.api.get_url(
     path='train.csv',
     repo=repo,
-    rev='v2'
+  
 
     )
 eval_resource_url = dvc.api.get_url(
     path='eval.csv',
     repo=repo,
-    rev='v2'
+   
 
     )
 
