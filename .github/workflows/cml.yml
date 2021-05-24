@@ -12,6 +12,7 @@ jobs:
 
     #container: docker://dvcorg/cml:0-dvc2-base1
     steps:
+      - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
         with:
           node-version: '12'
