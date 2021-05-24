@@ -11,8 +11,7 @@ import matplotlib.pyplot as plt
 import mlflow
 import os
 
-mlflow.set_tracking_uri(os.environ['MLFLOWURI'])
-print("totem",os.environ['MLFLOWURI'])
+mlflow.set_tracking_uri('https://mlflowtoby:mlflowtoby3333@mlflow.tobyre.ml/')
 mlflow.tensorflow.autolog()
 mlflow.set_experiment("tensorflow experiment")
 
