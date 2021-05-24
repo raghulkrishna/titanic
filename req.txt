@@ -5,3 +5,4 @@ seaborn
 numpy
 tensorflow
 mlflow
+boto3
