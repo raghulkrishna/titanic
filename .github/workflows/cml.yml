@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - dvc
 jobs:
   run:
     runs-on: [ubuntu-latest]

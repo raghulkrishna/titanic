@@ -20,24 +20,33 @@ repo='/Users/raghulkrishna/Desktop/projects/mlops/titanic'
 train_resource_url = dvc.api.get_url(
     path='train.csv',
     repo=repo,
-    rev='v1'
+    rev='v2'
 
     )
-print(train_resource_url)
-dftrain = pd.read_csv(train_resource_url)
-print(dftrain.head())
-msdbfm
+eval_resource_url = dvc.api.get_url(
+    path='eval.csv',
+    repo=repo,
+    rev='v2'
+
+    )
+
 mlflow.set_tracking_uri(os.environ['MLFLOWURI'])
 mlflow.tensorflow.autolog()
 mlflow.set_experiment("tensorflow experiment")
 
 with mlflow.start_run():
+    mlflow.log_param('train_url',train_resource_url)
+    mlflow.log_param('eval_url',eval_resource_url)
+
 
     # Load dataset.
-    dftrain = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/train.csv')
-    dfeval = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/eval.csv')
+    dftrain = pd.read_csv(train_resource_url)
+    dfeval = pd.read_csv(eval_resource_url)
     y_train = dftrain.pop('survived')
     y_eval = dfeval.pop('survived')
+    mlflow.log_param('train_shape',str(dftrain.shape))
+    mlflow.log_param('eval_shape',str(dfeval.shape))
+
 
     fc = tf.feature_column
     CATEGORICAL_COLUMNS = ['sex', 'n_siblings_spouses', 'parch', 'class', 'deck', 
@@ -94,7 +103,11 @@ with mlflow.start_run():
       # the training labels for regression or log odds for classification when
       # using cross entropy loss).
       'center_bias': True
+
     }
+    f_col = {"features":list(dftrain.columns)}
+
+    mlflow.log_dict(f_col,"feature columns.json")
 
 
     est = tf.estimator.BoostedTreesClassifier(feature_columns, **params)
