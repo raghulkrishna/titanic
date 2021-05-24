@@ -1,9 +1,9 @@
 name: model-wine-quality
 on: 
   push:
-    branches:
-      - main
-      - dvc
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   run:
     runs-on: [ubuntu-latest]
