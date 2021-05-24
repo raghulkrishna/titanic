@@ -12,10 +12,11 @@ import mlflow
 import os
 import dvc.api
 
+
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
-repo=''
+repo=os.getcwd()
 train_resource_url = dvc.api.get_url(
     path='train.csv',
     repo=repo,
