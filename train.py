@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import mlflow
 import os
 import dvc.api
-from smart_open import smart_open
 
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
