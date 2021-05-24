@@ -6,3 +6,4 @@ numpy
 tensorflow
 mlflow
 boto3
+dvc
