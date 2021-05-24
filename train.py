@@ -10,7 +10,23 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import mlflow
 import os
+import dvc.api
+from smart_open import smart_open
 
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+
+repo='/Users/raghulkrishna/Desktop/projects/mlops/titanic'
+train_resource_url = dvc.api.get_url(
+    path='train.csv',
+    repo=repo,
+    rev='v1'
+
+    )
+print(train_resource_url)
+dftrain = pd.read_csv(train_resource_url)
+print(dftrain.head())
+msdbfm
 mlflow.set_tracking_uri(os.environ['MLFLOWURI'])
 mlflow.tensorflow.autolog()
 mlflow.set_experiment("tensorflow experiment")
