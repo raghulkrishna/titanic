@@ -12,6 +12,7 @@ import mlflow
 import os
 
 mlflow.set_tracking_uri(os.environ['MLFLOWURI'])
+print("totem",os.environ['MLFLOWURI'])
 mlflow.tensorflow.autolog()
 mlflow.set_experiment("tensorflow experiment")
 
