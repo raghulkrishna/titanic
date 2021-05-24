@@ -19,6 +19,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           # Your ML workflow goes here
+          /usr/bin/python3 -m pip install --upgrade pip
           pip install -r req.txt
           python train.py
           
