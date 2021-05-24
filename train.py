@@ -15,7 +15,7 @@ import dvc.api
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
-repo='https://github.com/raghulkrishna/titanic.git'
+repo=''
 train_resource_url = dvc.api.get_url(
     path='train.csv',
     repo=repo,
